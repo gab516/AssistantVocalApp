@@ -1,0 +1,115 @@
+#:import utils kivy.utils
+
+<View>:
+    command_sayed: command_sayed
+    answer: answer
+    name_of_assistant: name_of_assistant
+    title_of_the_song: title_of_the_song
+    name_of_the_artist: name_of_the_artist
+    listening_state: listening_state
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 2
+
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            id: command_sayed
+            text: ""
+            color: "#001030"
+            font_size: 20
+            size_hint: 1, 0.2
+            halign: "center"
+            valign: "middle"
+
+        Label:
+            id: answer
+            text: ""
+            color: "#001030"
+            font_size: 20
+            size_hint: 1, 0.2
+            halign: "center"
+            valign: "middle"
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.2
+            Label:
+                text: "Nom de\nl'assistant :"
+                font_size: 15
+                size_hint: 0.3, 1
+                halign: "center"
+
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex('#001030')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            TextInput:
+                id: name_of_assistant
+                size_hint: 0.7, 1
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.2
+            Label:
+                text: "Titre de la\nmusique ou\nde la\nplaylist :"
+                font_size: 15
+                size_hint: 0.3, 1
+                halign: "center"
+
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex('#001030')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            TextInput:
+                id: title_of_the_song
+                size_hint: 0.7, 1
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.2
+            Label:
+                text: "Nom de\nl'artiste :"
+                font_size: 15
+                size_hint: 0.3, 1
+
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex('#001030')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            TextInput:
+                id: name_of_the_artist
+                size_hint: 0.7, 1
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.2
+
+            Button:
+                text: "Démarrer"
+                size_hint: 0.5, 1
+                background_color: "#001030"
+                on_press: root.start_recognizer()
+
+            Label:
+                text: "En écoute :"
+                font_size: 10
+                color: "#001030"
+                size_hint: 0.2, 1
+
+            Button:
+                id: listening_state
+                background_color: "#00ff00"
+                size_hint: 0.3, 1
